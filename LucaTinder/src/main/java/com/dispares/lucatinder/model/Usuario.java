@@ -1,5 +1,10 @@
 package com.dispares.lucatinder.model;
 
+/**
+ * Clase Usuario con todas los atributos necesarios y con las anotaciones de persistencia para la base de datos
+ * @author Pablo 
+ */
+
 import java.io.File;
 import java.util.List;
 
