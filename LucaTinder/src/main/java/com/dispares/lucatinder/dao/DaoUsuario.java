@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DaoUsuario extends JpaRepository<Usuario, Integer>{
-	//
+	//comentario developmente funcionar
 }
