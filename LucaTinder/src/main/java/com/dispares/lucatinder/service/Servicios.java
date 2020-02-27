@@ -11,5 +11,5 @@ import com.dispares.lucatinder.model.Usuario;
  */
 @Service
 public interface Servicios {
-	public void slavarUsuario(Usuario usuario);
+	public void salvarUsuario(Usuario usuario);
 }
