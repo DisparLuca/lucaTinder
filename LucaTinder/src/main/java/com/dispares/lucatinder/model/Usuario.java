@@ -4,8 +4,6 @@ package com.dispares.lucatinder.model;
  * Clase Usuario con todas los atributos necesarios y con las anotaciones de persistencia para la base de datos
  * @author Pablo 
  */
-
-import java.io.File;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,13 +23,13 @@ public class Usuario {
 	private int genero;//hombre=1 mujer= 0 y otros por definir
 	private String ciudad;
 	private List<String> categorias;
-	private File foto;
+	private String foto;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(int id, String nombre, int edad, int genero, String ciudad, List<String> categorias, File foto) {
+	public Usuario(int id, String nombre, int edad, int genero, String ciudad, List<String> categorias, String foto) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -90,11 +88,11 @@ public class Usuario {
 		this.categorias = categorias;
 	}
 
-	public File getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(File foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 
@@ -103,4 +101,5 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", ciudad="
 				+ ciudad + ", categorias=" + categorias + ", foto=" + foto + "]";
 	}
+
 }
