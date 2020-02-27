@@ -24,7 +24,16 @@ public class ControladorUsuarios {
 		return "registroUsuario";		
 	}
 	
-	
+	/**	
+	 * este metodo comprueba si existen errores en el formulario y devuelve el listado de usuarios o el formulario para corregir errores
+	 * 
+	 * @author jesús
+	 * 
+	 * @param user
+	 * @param result
+	 * @param model
+	 * @return archivo web
+	 */
 	@PostMapping
 	public String resumenUsuarios(
 							@Valid Usuario user,
