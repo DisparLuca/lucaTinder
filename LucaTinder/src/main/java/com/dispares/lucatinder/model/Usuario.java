@@ -2,7 +2,7 @@ package com.dispares.lucatinder.model;
 
 /**
  * Clase Usuario con todas los atributos necesarios y con las anotaciones de persistencia para la base de datos
- * @author Pablo 
+ * @author Luca grupo 3
  */
 import java.util.List;
 import java.util.Locale;
@@ -12,11 +12,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.github.javafaker.Faker;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
+	
+	private static final Logger logger = LoggerFactory.getLogger(Usuario.class);
 	
 	@Id
 	@Column(name = "ID_Usuario")
@@ -105,9 +110,17 @@ public class Usuario {
 				+ ciudad + ", categorias=" + categorias + ", foto=" + foto + "]";
 	}
 	
+	/**
+	 * Metodo que introduce n cantidad de usuarios en la base de datos
+	 * @author Luca grupo 3
+	 * @param numero de usuarios falsos que se van a añadir a la base de datos
+	 */
 	public void fakeUsuario(int numeroAñadir) {
+		logger.info("Se van a añadir: " + numeroAñadir + " usuarios");
 		Faker faker = new Faker(new Locale("es-ES"));
+		
 		for(int i=0; i<numeroAñadir; i++) {
+			
 			Usuario usuario = new Usuario();
 			
 			usuario.setNombre(faker.name().firstName()+" " + faker.name().lastName());
@@ -116,7 +129,7 @@ public class Usuario {
 			usuario.setCiudad(faker.address().cityName());
 			serviciosUsuario.add(usuario);	
 		}
-		
+		logger.info("Se han añadido los usuarios");
 	}
 	
 
