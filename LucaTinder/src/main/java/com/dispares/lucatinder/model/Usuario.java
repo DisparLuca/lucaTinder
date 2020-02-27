@@ -5,11 +5,14 @@ package com.dispares.lucatinder.model;
  * @author Pablo 
  */
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.github.javafaker.Faker;
 
 @Entity
 @Table(name = "usuarios")
@@ -100,6 +103,20 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", ciudad="
 				+ ciudad + ", categorias=" + categorias + ", foto=" + foto + "]";
+	}
+	
+	public void fakeUsuario(int numeroAñadir) {
+		Faker faker = new Faker(new Locale("es-ES"));
+		for(int i=0; i<numeroAñadir; i++) {
+			Usuario usuario = new Usuario();
+			
+			usuario.setNombre(faker.name().firstName()+" " + faker.name().lastName());
+			usuario.setEdad(faker.number().numberBetween(1, 100));
+			usuario.setGenero(faker.number().numberBetween(0, 1));
+			usuario.setCiudad(faker.address().cityName());
+			serviciosUsuario.add(usuario);	
+		}
+		
 	}
 
 }
