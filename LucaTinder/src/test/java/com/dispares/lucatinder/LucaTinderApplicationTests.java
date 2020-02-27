@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 
-import com.dispares.lucatinder.control;
+import com.dispares.lucatinder.control.ControladorUsuarios;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
