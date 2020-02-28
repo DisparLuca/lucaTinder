@@ -37,6 +37,20 @@ import com.github.javafaker.Faker;
 	        return query.getResultList();
 		}
 		
+		/**Metodo que devuelve una lista de todos los usuarios a los que ha dado like un id
+		 * @author pablo
+		 * @param id del usuario del que se quiere ver a quien ha dado like
+		 * @return lista de usuarios
+		*/
+		@Override
+		public List<Usuario> getLikeados(int id_usuario) {
+			logger.info("Entro en el metodo getLikeados");
+			Query query = entityManager.createNativeQuery("SELECT b.username FROM users b, ul a WHERE a.idB=b.USER_ID AND idA=?;");
+			query.setParameter(1, id_usuario);		
+			logger.info("Salgo del metodo getLikeados");
+	        return query.getResultList();
+		}
+		
 		/**
 		 * Metodo que introduce n cantidad de usuarios en la base de datos
 		 * @author Luca grupo 3
