@@ -45,7 +45,7 @@ import com.github.javafaker.Faker;
 		@Override
 		public List<Usuario> getLikeados(int id_usuario) {
 			logger.info("Entro en el metodo getLikeados");
-			Query query = entityManager.createNativeQuery("SELECT b.username FROM users b, ul a WHERE a.idB=b.USER_ID AND idA=?;");
+			Query query = entityManager.createNativeQuery("SELECT b.username FROM users b, usuariosLike a WHERE a.idB=b.USER_ID AND idA=?;");
 			query.setParameter(1, id_usuario);		
 			logger.info("Salgo del metodo getLikeados");
 	        return query.getResultList();
