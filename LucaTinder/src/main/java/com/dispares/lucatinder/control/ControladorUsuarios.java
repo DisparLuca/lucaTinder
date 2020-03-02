@@ -11,9 +11,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.dispares.lucatinder.service.Servicios;
+import com.dispares.lucatinder.service.ServiciosImpl;
 
 /**
  * Controlador de usuarios con anotaciones de Spring
@@ -61,4 +63,21 @@ public class ControladorUsuarios {
 		
 		return "resumenUsuarios";
 	}
+	
+	/**	
+	 * Este metodo devuelve el usuario que se ha requerido a una id
+	 * 
+	 * @author Pablo
+	 * 
+	 * @param model
+	 * @param id del usuario
+	 * @return archivo web
+	 */
+	@GetMapping("/leerUsuario")
+	public String leerUsuario(ModelMap model, @RequestParam("id") int id) {
+		logger.info("-- en metodo leerUsuario");
+		model.addAttribute("usuario", servUsuario.getUsuario(id));
+		return "verUsuario";		
+	}
+	
 }
