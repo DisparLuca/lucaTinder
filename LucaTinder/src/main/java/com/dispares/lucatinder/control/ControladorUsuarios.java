@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.dispares.lucatinder.service.Servicios;
+import com.dispares.lucatinder.service.ServiciosImpl;
 
 /**
  * Controlador de usuarios con anotaciones de Spring
@@ -78,8 +80,39 @@ public class ControladorUsuarios {
 	@RequestMapping("/modificarusuario/{id}")
 	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
 	    ModelAndView mav = new ModelAndView("modificar_usuario");
-	    Optional<Usuario> usuario = this.servUsuario.recuperarUsuario(id);
+	    Optional<Usuario> usuario = this.servUsuario.getUsuario(id);
 	    mav.addObject("usuario", usuario); 
 	    return mav;
 	}
+	
+	/**	
+	 * Este metodo devuelve el usuario que se ha requerido a una id
+	 * 
+	 * @author Pablo
+	 * 
+	 * @param model
+	 * @param id del usuario
+	 * @return archivo web
+	 */
+	@GetMapping("/leerUsuario")
+	public String leerUsuario(ModelMap model, @RequestParam("id") int id) {
+		logger.info("-- en metodo leerUsuario");
+		model.addAttribute("usuario", servUsuario.getUsuario(id));
+		return "verUsuario";		
+	}
+	
+	/**	
+	 * Este metodo elimina un usuario cuando se le proporciona una id asociada
+	 * 
+	 * @author Pablo
+	 * @param id del usuario a eliminar
+	 * @return archivo web
+	 */
+	@GetMapping("/eliminarUsuario")
+	public ModelAndView eliminarUsuario(@RequestParam("id") int id) {
+		logger.info("-- en metodo eliminarUsuario");
+		servUsuario.delete(id);
+		return new ModelAndView("redirect:/");		
+	}
+	
 }

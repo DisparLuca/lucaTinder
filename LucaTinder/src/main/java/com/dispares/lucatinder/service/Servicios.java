@@ -1,5 +1,7 @@
 package com.dispares.lucatinder.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.dispares.lucatinder.model.Usuario;
@@ -15,6 +17,7 @@ import com.dispares.lucatinder.model.Usuario;
 @Service
 public interface Servicios {
 	public void salvarUsuario(Usuario usuario);
-	
 	public void modificarUsuario(Usuario usuario);
+	Optional<Usuario> getUsuario(int id);
+	void delete(int id);
 }

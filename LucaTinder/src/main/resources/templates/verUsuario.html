@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>lista de usuarios</title>
+</head>
+<body>
+<div align="center">
+    <h1>Usuario</h1>
+    <br/><br/>
+    <table border="1" >
+        <thead>
+            <tr>
+                <th>nombre</th>
+				<th>edad</th>
+				<th>género</th>
+				<th>ciudad</th>
+				<th>categorías</th>
+				<th>foto</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td><span th:text="${usuario.nombre}" /></td>
+				<td><span th:text="${usuario.edad}" /></td>
+				<td><span th:text="${usuario.genero}" /></td>
+				<td><span th:text="${usuario.ciudad}" /></td>
+				<td><span th:text="${usuario.categorias}" /></td>
+				<td><span th:text="${usuario.foto}" /></td>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
