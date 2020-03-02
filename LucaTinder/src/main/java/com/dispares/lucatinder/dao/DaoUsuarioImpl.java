@@ -68,7 +68,7 @@ import com.github.javafaker.Faker;
 				usuario.setEdad(faker.number().numberBetween(1, 100));
 				usuario.setGenero(faker.number().numberBetween(0, 1));
 				usuario.setCiudad(faker.address().cityName());
-				salvarUsuarios(usuario);	
+				save(usuario);	
 			}
 			logger.info("Se han añadido los usuarios");
 		}

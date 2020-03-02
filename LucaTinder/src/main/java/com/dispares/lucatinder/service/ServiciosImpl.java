@@ -20,7 +20,7 @@ public class ServiciosImpl implements Servicios{
 	@Override
 	public void salvarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		usuario.save(usuario);
+		usuarioDao.save(usuario);
 	}
 
 }

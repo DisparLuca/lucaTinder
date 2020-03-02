@@ -45,7 +45,7 @@ public class ControladorUsuarios {
 	 * @return archivo web
 	 */
 	@PostMapping
-	public String resumenUsuarios(
+	public String resumenUsuario(
 							@Valid Usuario user,
 							BindingResult result, 
 							ModelMap model) {
@@ -59,6 +59,6 @@ public class ControladorUsuarios {
 
 		servUsuario.salvarUsuario(user);
 		
-		return "resumenUsuarios";
+		return "resumenUsuario";
 	}
 }
