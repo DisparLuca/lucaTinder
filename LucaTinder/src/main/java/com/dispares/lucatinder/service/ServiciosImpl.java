@@ -35,5 +35,10 @@ public class ServiciosImpl implements Servicios{
 		return usuarioDao.findById(id);
 		
 	}
+	
+	@Override
+	public void delete(int id) {
+		usuarioDao.deleteById(id);
+	}
 
 }

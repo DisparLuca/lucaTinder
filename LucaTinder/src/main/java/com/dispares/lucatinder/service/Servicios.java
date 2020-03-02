@@ -18,4 +18,6 @@ public interface Servicios {
 	public void salvarUsuario(Usuario usuario);
 
 	Optional<Usuario> getUsuario(int id);
+
+	void delete(int id);
 }
