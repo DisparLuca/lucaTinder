@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+
+<title>Información de registro</title>
+</head>
+
+<body>
+	<h2>Información de registro</h2>
+	<p>Ha completado su registro en LucaTinder, en caso de cualquier duda contáctenos en: </p><a>emaildecontacto@prueba.com</a>
+		<div>
+			<table border="2">
+			<thead>
+				<tr>
+					<th>nombre</th>
+					<th>edad</th>
+					<th>género</th>
+					<th>ciudad</th>
+					<th>categorías</th>
+					<th>foto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>					
+					<td><span th:text="${usuario.nombre}" /></td>
+					<td><span th:text="${usuario.edad}" /></td>
+					<td><span th:text="${usuario.genero}" /></td>
+					<td><span th:text="${usuario.ciudad}" /></td>
+					<td><span th:text="${usuario.categorias}" /></td>
+					<td><span th:text="${usuario.foto}" /></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+
+</body>
