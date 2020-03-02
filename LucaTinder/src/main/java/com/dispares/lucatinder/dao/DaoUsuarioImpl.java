@@ -11,11 +11,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.github.javafaker.Faker;
+
+
 
 	@Repository
 	@Transactional(readOnly = true)
@@ -72,10 +75,11 @@ import com.github.javafaker.Faker;
 		 * @author Luca grupo 3
 		 * @param numero de usuarios falsos que se van a añadir a la base de datos
 		 */
+		@Autowired
+		DaoUsuario usuarioDao;
 		public void fakeUsuario(int numeroAñadir) {
 			logger.info("Se van a añadir: " + numeroAñadir + " usuarios");
 			Faker faker = new Faker(new Locale("es-ES"));
-			DaoUsuario usuarioDao;
 			for(int i=0; i<numeroAñadir; i++) {
 				
 				Usuario usuario = new Usuario();
