@@ -11,7 +11,7 @@ import com.dispares.lucatinder.model.Usuario;
 
 @Service
 @Transactional
-public class ImpleServicios implements Servicios{
+public class ServiciosImpl implements Servicios{
 
 	@Autowired @Qualifier("DaoUsuario")
 	DaoUsuario usuarioDao;
