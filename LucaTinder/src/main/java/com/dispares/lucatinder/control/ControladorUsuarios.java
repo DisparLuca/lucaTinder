@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.dispares.lucatinder.service.Servicios;
@@ -78,6 +79,20 @@ public class ControladorUsuarios {
 		logger.info("-- en metodo leerUsuario");
 		model.addAttribute("usuario", servUsuario.getUsuario(id));
 		return "verUsuario";		
+	}
+	
+	/**	
+	 * Este metodo elimina un usuario cuando se le proporciona una id asociada
+	 * 
+	 * @author Pablo
+	 * @param id del usuario a eliminar
+	 * @return archivo web
+	 */
+	@GetMapping("/eliminarUsuario")
+	public ModelAndView eliminarUsuario(@RequestParam("id") int id) {
+		logger.info("-- en metodo eliminarUsuario");
+		servUsuario.delete(id);
+		return new ModelAndView("redirect:/");		
 	}
 	
 }
