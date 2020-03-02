@@ -124,7 +124,7 @@ public class ControladorUsuarios {
 	 * @param id del usuario
 	 * @return archivo web
 	 */
-	@GetMapping("/listarDescarte")
+	@GetMapping("/listarDescartes")
 	public String listarDescartes(ModelMap model, @RequestParam("id") int id) {
 		logger.info("-- en metodo ListarDescartes");
 		model.addAttribute("listaUsuarios", servUsuario.getDescartes(id));
