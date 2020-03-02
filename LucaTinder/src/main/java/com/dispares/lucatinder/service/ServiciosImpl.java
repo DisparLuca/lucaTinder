@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,18 @@ public class ServiciosImpl implements Servicios{
 		return usuarioDao.findById(id);
 		
 	}
+	
+	/**Metodo que devuelve una lista de usuarios descartados por un usuario id
+	 * @author pablo
+	 * @param id del usuario 
+	 * @return lista de usuarios descartados
+	*/
+	@Override
+	public List<Usuario> getDescartes(int id) {
+		return usuarioDao.listarDescartes(id);
+	
+	}
+	
 	
 	/**Metodo para borrar un usuario prorcionando la id
 	 * @author pablo

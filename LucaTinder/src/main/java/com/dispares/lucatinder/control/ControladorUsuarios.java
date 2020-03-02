@@ -115,4 +115,20 @@ public class ControladorUsuarios {
 		return new ModelAndView("redirect:/");		
 	}
 	
+	/**	
+	 * Este metodo devuelve la lista de usuarios qeu ha descartadao un usuario por su id
+	 * 
+	 * @author Pablo
+	 * 
+	 * @param model
+	 * @param id del usuario
+	 * @return archivo web
+	 */
+	@GetMapping("/listarDescarte")
+	public String listarDescartes(ModelMap model, @RequestParam("id") int id) {
+		logger.info("-- en metodo ListarDescartes");
+		model.addAttribute("listaUsuarios", servUsuario.getDescartes(id));
+		return "listausuarios";		
+	}
+	
 }
