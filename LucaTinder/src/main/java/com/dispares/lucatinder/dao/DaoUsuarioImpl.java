@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -45,10 +46,25 @@ import com.github.javafaker.Faker;
 		@Override
 		public List<Usuario> getLikeados(int id_usuario) {
 			logger.info("Entro en el metodo getLikeados");
-			Query query = entityManager.createNativeQuery("SELECT b.username FROM users b, usuariosLike a WHERE a.idB=b.USER_ID AND idA=?;");
+			Query query = entityManager.createNativeQuery("SELECT b.id_usuarios, b.id_usuarios, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuarios AND idA=? AND a.tipo=1;");
 			query.setParameter(1, id_usuario);		
 			logger.info("Salgo del metodo getLikeados");
 	        return query.getResultList();
+		}
+		
+		/**Metodo que devuelve una lista de todos los usuarios a los que ha dado dislike un id
+		 * @author pablo
+		 * @param id del usuario del que se quiere ver a quien ha dado dislike
+		 * @return lista de usuarios
+		*/
+		@Override
+		public List<Usuario> listarDescartes(int id_usuario){
+			
+			logger.info("Entro en el metodo listarDescartes");
+			Query query = entityManager.createNativeQuery("SELECT b.id_usuarios, b.id_usuarios, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuarios AND idA=? AND a.tipo=0;");
+			query.setParameter(1, id_usuario);			
+			logger.info("Salgo del metodo listarDescartes");
+			return query.getResultList();
 		}
 		
 		/**
