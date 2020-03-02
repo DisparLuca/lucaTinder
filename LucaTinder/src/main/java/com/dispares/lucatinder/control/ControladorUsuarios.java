@@ -57,7 +57,7 @@ public class ControladorUsuarios {
 		}
 
 
-		servUsuario.salvarUsuario(user);
+		//servUsuario.salvarUsuario(user);
 		
 		return "resumenUsuarios";
 	}

@@ -20,14 +20,14 @@
                 </tr>
                 <tr>
                     <td>Edad:</td>
-                    <td><input type="number" th:field="*{edad}" /></td>
+                    <td><input type="number" th:field="*{edad}" min="1"/></td>
                     <td> <form:errors path="edad" class="help-inline"/></td>
                 </tr>
                 <tr>
                     <td>Genero:</td>
                     <td>
-                		<input type="radio" name=genero value=0 th:checked="*{Genero}"/><p>Mujer</p>
-                		<input type="radio" name=genero value=1 th:checked="*{Genero}"/><p>Hombre</p>
+                		<input type="radio" name=genero value=0 th:checked="*{Genero}"/>Mujer
+                		<input type="radio" name=genero value=1 th:checked="*{Genero}"/>Hombre
                     </td>
                      <td> <form:errors path="genero" class="help-inline"/></td>
                 </tr>                           
