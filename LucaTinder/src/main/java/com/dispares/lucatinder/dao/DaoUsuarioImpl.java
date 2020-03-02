@@ -70,27 +70,4 @@ import com.github.javafaker.Faker;
 			return query.getResultList();
 		}
 		
-		/**
-		 * Metodo que introduce n cantidad de usuarios en la base de datos
-		 * @author Luca grupo 3
-		 * @param numero de usuarios falsos que se van a añadir a la base de datos
-		 */
-		@Autowired
-		DaoUsuario usuarioDao;
-		public void fakeUsuario(int numeroAñadir) {
-			logger.info("Se van a añadir: " + numeroAñadir + " usuarios");
-			Faker faker = new Faker(new Locale("es-ES"));
-			for(int i=0; i<numeroAñadir; i++) {
-				
-				Usuario usuario = new Usuario();
-				
-				usuario.setNombre(faker.name().firstName()+" " + faker.name().lastName());
-				usuario.setEdad(faker.number().numberBetween(1, 100));
-				usuario.setGenero(faker.number().numberBetween(0, 1));
-				usuario.setCiudad(faker.address().cityName());
-				usuarioDao.save(usuario);	
-			}
-			logger.info("Se han añadido los usuarios");
-		}
-
 	}

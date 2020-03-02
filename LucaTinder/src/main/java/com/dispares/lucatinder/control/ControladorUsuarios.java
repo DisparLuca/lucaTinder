@@ -36,10 +36,10 @@ public class ControladorUsuarios {
 	@Autowired
 	Servicios servUsuario;
 	
-	@GetMapping("/registroUsuarios")
+	@GetMapping("/registroUsuario")
 	public String newUser(ModelMap model) {
 		 logger.info("entra en newUser"); 
-		model.addAttribute("user", new User());
+		model.addAttribute("usuario", new Usuario());
 		return "registroUsuario";		
 	}
 	
@@ -53,7 +53,7 @@ public class ControladorUsuarios {
 	 * @param model
 	 * @return archivo web
 	 */
-	@PostMapping
+	@PostMapping("/resumenUsuario")
 	public String resumenUsuario(
 							@Valid Usuario user,
 							BindingResult result, 
@@ -66,7 +66,7 @@ public class ControladorUsuarios {
 		}
 
 
-		servUsuario.salvarUsuario(user);
+		//servUsuario.salvarUsuario(user);
 		
 		return "resumenUsuario";
 	}

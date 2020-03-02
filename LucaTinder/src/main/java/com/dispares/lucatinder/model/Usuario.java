@@ -26,22 +26,22 @@ public class Usuario {
 	private int id;
 	private String nombre;
 	private int edad;
-	private int genero;//hombre=1 mujer= 0 y otros por definir
+	private String genero;
 	private String ciudad;
-	private List<String> categorias;
+	//private List<String> categorias=null;
 	private String foto;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String nombre, int edad, int genero, String ciudad, List<String> categorias, String foto) {
+	public Usuario(String nombre, int edad, String genero, String ciudad, List<String> categorias, String foto) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
 		this.genero = genero;
 		this.ciudad = ciudad;
-		this.categorias = categorias;
+		//this.categorias = categorias;
 		this.foto = foto;
 	}
 
@@ -69,11 +69,11 @@ public class Usuario {
 		this.edad = edad;
 	}
 
-	public int getGenero() {
+	public String getGenero() {
 		return genero;
 	}
 
-	public void setGenero(int genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 
@@ -85,14 +85,14 @@ public class Usuario {
 		this.ciudad = ciudad;
 	}
 
-	public List<String> getCategorias() {
+	/*public List<String> getCategorias() {
 		return categorias;
 	}
 
 	public void setCategorias(List<String> categorias) {
 		this.categorias = categorias;
 	}
-
+*/
 	public String getFoto() {
 		return foto;
 	}
@@ -104,7 +104,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", ciudad="
-				+ ciudad + ", categorias=" + categorias + ", foto=" + foto + "]";
+				+ ciudad + ", categorias=" + ", foto=" + foto + "]";
 	}
 	
 }

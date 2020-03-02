@@ -9,7 +9,7 @@
     <div align="center">
         <h1>Registro de un nuevo usuario</h1>
         <br />
-        <form action="#" th:action="@{/registroUsuario}" th:object="${usuario}"
+        <form action="#" th:action="@{/resumenUsuario}" th:object="${usuario}"
             method="post">
  
             <table border="2">
@@ -26,8 +26,8 @@
                 <tr>
                     <td>Genero:</td>
                     <td>
-                		<input type="radio" name=genero value=0 th:checked="*{Genero}"/><p>Mujer</p>
-                		<input type="radio" name=genero value=1 th:checked="*{Genero}"/><p>Hombre</p>
+                		<input type="radio" name=genero value=mujer th:checked="*{genero}"/><p>Mujer</p>
+                		<input type="radio" name=genero value=hombre th:checked="*{genero}"/><p>Hombre</p>
                     </td>
                      <td> <form:errors path="genero" class="help-inline"/></td>
                 </tr>                           
@@ -37,6 +37,7 @@
                      <td> <form:errors path="ciudad" class="help-inline"/></td>
                 </tr>
             </table>
+            <button type="submit" name="action" value="save">save</button>
         </form>
     </div>
 </body>
