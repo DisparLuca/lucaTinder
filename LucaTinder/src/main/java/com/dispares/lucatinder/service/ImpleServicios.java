@@ -25,15 +25,6 @@ public class ImpleServicios implements Servicios{
 		///usuario.save(usuario);
 	}
 	
-	/**Metodo que devuelve un Usuario,si lo encuentra, cuando se le proporciona un id
-	 * @author pablo
-	 * @param id del usuario 
-	 * @return usuario del id proporcionado
-	*/
-	@Override
-	public Optional<Usuario> getUsuario(int id) {
-		return usuarioDao.findById(id);
-		
-	}
+	
 
 }
