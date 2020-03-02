@@ -1,5 +1,7 @@
 package com.dispares.lucatinder.control;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.apache.tomcat.jni.User;
@@ -10,7 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.dispares.lucatinder.service.Servicios;
@@ -60,5 +67,19 @@ public class ControladorUsuarios {
 		servUsuario.salvarUsuario(user);
 		
 		return "resumenUsuario";
+	}
+	
+	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
+	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+	    this.servUsuario.salvarUsuario(usuario);	     
+	    return "redirect:/";
+	}
+	
+	@RequestMapping("/modificarusuario/{id}")
+	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
+	    ModelAndView mav = new ModelAndView("modificar_usuario");
+	    Optional<Usuario> usuario = this.servUsuario.recuperarUsuario(id);
+	    mav.addObject("usuario", usuario); 
+	    return mav;
 	}
 }

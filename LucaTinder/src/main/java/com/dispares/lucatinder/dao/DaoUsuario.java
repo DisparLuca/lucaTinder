@@ -9,6 +9,6 @@ import com.dispares.lucatinder.model.Usuario;
  * @author David
  *creada y recreada la interfaz
  */
-public interface DaoUsuario extends JpaRepository<Usuario, Integer> {
+public interface DaoUsuario extends JpaRepository<Usuario, Integer>, DaoUsuarioCustom {
 
 }

@@ -22,5 +22,9 @@ public class ServiciosImpl implements Servicios{
 		// TODO Auto-generated method stub
 		usuarioDao.save(usuario);
 	}
-
+	
+	@Override
+	public void modificarUsuario(Usuario usuario) {
+		usuarioDao.save(usuario);
+	}
 }
