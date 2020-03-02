@@ -36,6 +36,10 @@ public class ServiciosImpl implements Servicios{
 		
 	}
 	
+	/**Metodo para borrar un usuario prorcionando la id
+	 * @author pablo
+	 * @param id del usuario 
+	*/
 	@Override
 	public void delete(int id) {
 		usuarioDao.deleteById(id);
