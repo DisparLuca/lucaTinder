@@ -76,14 +76,22 @@ public class ControladorUsuarios {
 	    this.servUsuario.salvarUsuario(usuario);	     
 	    return "redirect:/";
 	}
-	
+	/*
 	@RequestMapping("/modificarusuario/{id}")
 	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("modificar_usuario");
+	    ModelAndView mav = new ModelAndView("modificarusuario");
 	    Optional<Usuario> usuario = this.servUsuario.getUsuario(id);
-	    mav.addObject("usuario", usuario); 
+	    mav.addObject("usuario", usuario.get()); 
 	    return mav;
+	}*/
+	
+	@GetMapping("/modificarUsuario")
+	public String editUser(ModelMap model) {
+		logger.info("-- en EDIT");
+		model.addAttribute("usuario", servUsuario.getUsuario(1).get());
+		return "modificiarusuario";		
 	}
+	
 	
 	/**	
 	 * Este metodo devuelve el usuario que se ha requerido a una id
