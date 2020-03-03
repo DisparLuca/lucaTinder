@@ -35,7 +35,7 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String nombre, int edad, String genero, String ciudad, List<String> categorias, String foto) {
+	public Usuario(String nombre, int edad, String genero, String ciudad, String foto) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;

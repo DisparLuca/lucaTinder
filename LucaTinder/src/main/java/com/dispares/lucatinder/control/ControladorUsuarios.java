@@ -65,8 +65,8 @@ public class ControladorUsuarios {
 			return "registroUsuario";
 		}
 
-
-		//servUsuario.salvarUsuario(user);
+		user.setFoto("https://3.bp.blogspot.com/-DZTmmJl4faA/Wnnb5Fg46rI/AAAAAAAAACs/qyQGOEMMVh4M85dG82Tr3nytEf29AKm4wCPcBGAYYCw/s1600/beagle-adulto.jpg");
+		servUsuario.salvarUsuario(user);
 		
 		return "resumenUsuario";
 	}
