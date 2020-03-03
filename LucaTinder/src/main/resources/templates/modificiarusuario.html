@@ -13,25 +13,25 @@
  
             <table border="2" >
                 <tr>             
-                    <td>usuario id:</td>
+                    <td>Usuario id:</td>
                     <td>
                         <input type="text" th:field="*{id}" readonly="readonly" />
                     </td>
                 </tr>        
                 <tr>             
-                    <td>nombre del usuario:</td>
+                    <td>Nombre del usuario:</td>
                     <td>
                         <input type="text" th:field="*{nombre}" />
                     </td>
                 </tr>
                 <tr>
-                    <td>edad del usuario:</td>
+                    <td>Edad del usuario:</td>
                     <td><input type="text" th:field="*{edad}" /></td>
                 </tr>
                 <tr>
                     <td>
-                		<input type="radio" name=genero value=0 th:checked="*{genero}"/><p>Mujer</p>
-                		<input type="radio" name=genero value=1 th:checked="*{genero}"/><p>Hombre</p>
+                		<input type="radio" name=genero value="mujer" th:checked="*{genero}"/>Mujer
+                		<input type="radio" name=genero value="hombre" th:checked="*{genero}"/>Hombre
                     </td>
                 </tr>
                 <tr>
