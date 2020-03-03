@@ -49,7 +49,7 @@ import com.github.javafaker.Faker;
 		@Override
 		public List<Usuario> getLikeados(int id_usuario) {
 			logger.info("Entro en el metodo getLikeados");
-			Query query = entityManager.createNativeQuery("SELECT b.id_usuarios, b.id_usuarios, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuarios AND idA=? AND a.tipo=1;");
+			Query query = entityManager.createNativeQuery("SELECT  b.nombre, b.id_usuario, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuario AND idA=? AND a.tipo=1;",Usuario.class);
 			query.setParameter(1, id_usuario);		
 			logger.info("Salgo del metodo getLikeados");
 	        return query.getResultList();
@@ -64,7 +64,7 @@ import com.github.javafaker.Faker;
 		public List<Usuario> listarDescartes(int id_usuario){
 			
 			logger.info("Entro en el metodo listarDescartes");
-			Query query = entityManager.createNativeQuery("SELECT b.id_usuarios, b.id_usuarios, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuarios AND idA=? AND a.tipo=0;");
+			Query query = entityManager.createNativeQuery("SELECT  b.nombre, b.id_usuario, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuario AND idA=? AND a.tipo=0;",Usuario.class);
 			query.setParameter(1, id_usuario);			
 			logger.info("Salgo del metodo listarDescartes");
 			return query.getResultList();

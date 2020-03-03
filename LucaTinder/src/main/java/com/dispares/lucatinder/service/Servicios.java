@@ -23,4 +23,6 @@ public interface Servicios {
 	void delete(int id);
 	public List<Usuario> listarUsuarios();
 	void fakeUsuario(int numeroAñadir);
+	public List<Usuario> getDescartes(int id);
+	public List<Usuario> getLikeados(int id);
 }

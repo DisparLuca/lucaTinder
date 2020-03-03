@@ -96,6 +96,17 @@ public class ServiciosImpl implements Servicios{
 		logger.info("Se han añadido los usuarios");
 	}
 
+	@Override
+	public List<Usuario> getDescartes(int id) {
+		
+		return usuarioDao.listarDescartes(id);
+	}
+
+	@Override
+	public List<Usuario> getLikeados(int id) {
+		return usuarioDao.getLikeados(id);
+	}
+
 	
 
 }

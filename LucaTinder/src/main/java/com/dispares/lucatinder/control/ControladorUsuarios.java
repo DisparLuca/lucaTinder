@@ -134,7 +134,7 @@ public class ControladorUsuarios {
 	 @RequestMapping(value = "/leerUsuario", method = RequestMethod.GET)
 	public String leerUsuario(@ModelAttribute("usuario") Usuario usuario,
 	         ModelMap model) {
-		servUsuario.fakeUsuario(1);
+
 		usuario.setId(1);
 		logger.info("-- en metodo leerUsuario");
 		model.addAttribute("usuario",servUsuario.getUsuario(usuario.getId()).get());
@@ -170,5 +170,20 @@ public class ControladorUsuarios {
 		servUsuario.delete(id);
 		return new ModelAndView("redirect:/listausuarios");		
 	}
+	
+	@GetMapping("/listarDescartes/{id}")
+	public String listarDescartes(ModelMap model, @PathVariable(name = "id") int id) {
+		logger.info("-- en metodo ListarDescartes");
+		model.addAttribute("listaUsuarios", servUsuario.getDescartes(id));
+		return "listausuarios";		
+	}
+	
+	@GetMapping("/listarLikes/{id}")
+	public String listarLikes(ModelMap model, @PathVariable(name = "id") int id) {
+		logger.info("-- en metodo ListarLikes");
+		model.addAttribute("listaUsuarios", servUsuario.getLikeados(id));
+		return "listausuarios";		
+	}
+	
 	
 }
