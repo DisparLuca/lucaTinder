@@ -22,4 +22,5 @@ public interface Servicios {
 	Optional<Usuario> getUsuario(int id);
 	void delete(int id);
 	public List<Usuario> listarUsuarios();
+	void fakeUsuario(int numeroAñadir);
 }
