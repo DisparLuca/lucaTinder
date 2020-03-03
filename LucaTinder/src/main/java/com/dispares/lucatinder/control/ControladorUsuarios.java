@@ -38,6 +38,21 @@ public class ControladorUsuarios {
 	@Autowired
 	Servicios servUsuario;
 	
+	@GetMapping("/login")
+	public String loginPage() {
+		return "login";
+	}
+	
+	@GetMapping("/logout")
+	public void logout() {	}
+	
+	@GetMapping("/ver")
+	public String ver(@Valid Usuario user,
+			BindingResult result, 
+			ModelMap model) {
+		return "verUsuario";
+	}
+	
 	@GetMapping("/registroUsuario")
 	public String newUser(ModelMap model) {
 		 logger.info("entra en newUser"); 
