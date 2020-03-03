@@ -119,7 +119,7 @@ public class ControladorUsuarios {
 	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
 		logger.info("-- en EDIT");
 		model.addAttribute("usuario", servUsuario.getUsuario(id).get());
-		return "modificiarusuario";		
+		return "modificarusuario";		
 	}
 	
 	/**	

@@ -1,34 +1,47 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>lista de usuarios</title>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
+<title>Información de usuario</title>
 </head>
+
 <body>
-<div align="center">
-    <h1>Usuario</h1>
-    <br/><br/>
-    <table border="1" >
-        <thead>
-            <tr>
-                <th>nombre</th>
-				<th>edad</th>
-				<th>género</th>
-				<th>ciudad</th>
-				<th>categorías</th>
-				<th>foto</th>
-            </tr>
-        </thead>
-        <tbody>
-                <td><span th:text="${usuario.nombre}" /></td>
-				<td><span th:text="${usuario.edad}" /></td>
-				<td><span th:text="${usuario.genero}" /></td>
-				<td><span th:text="${usuario.ciudad}" /></td>
-				<!--<td><span th:text="${usuario.categorias}" /></td>-->
-				<td><span th:text="${usuario.foto}" /></td>
-        </tbody>
-    </table>
-</div>   
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table">
+					<div class="row header">
+                       <div class="cell">Nombre</div>
+                       <div class="cell">Edad</div>
+                       <div class="cell">Género</div>
+                       <div class="cell">Ciudad</div>
+                       <div class="cell">Foto</div>
+                     </div>
+                    <div class="row">
+						<div class="cell" data-title="Nombre" th:text="${usuario.nombre}"></div>
+						<div class="cell" data-title="Edad" th:text="${usuario.edad}"></div>
+						<div class="cell" data-title="Género" th:text="${usuario.genero}"></div>
+						<div class="cell" data-title="Ciudad" th:text="${usuario.ciudad}"></div>
+                    	<div class="col" data-title="Foto"><img th:src="${usuario.foto}"/></div>
+				    </div>
+				</div>
+		    </div>
+		</div>
+		    </div>        	
 </body>
 </html>
