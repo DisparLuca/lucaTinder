@@ -91,13 +91,6 @@ public class ControladorUsuarios {
 	    return "redirect:/";
 	}
 	
-	@RequestMapping("/modificarusuario/{id}")
-	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("modificarusuario");
-	    Optional<Usuario> usuario = this.servUsuario.getUsuario(id);
-	    mav.addObject("usuario", usuario); 
-	    return mav;
-	}
 	
 	/**	
 	 * Este metodo devuelve el usuario que se ha requerido a una id
