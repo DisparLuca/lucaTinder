@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>lista de usuarios</title>
-<link rel="stylesheet" href="../resources/static/css/estilo.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 </head>
 <body>
 <div align="center">
@@ -30,10 +30,12 @@
 				<td><span th:text="${usuario.ciudad}" /></td>
 				<td><img src="https://solutionssap.com/wp-content/uploads/2016/05/Dummy.png"/></td>
 				<td>                   
-                   <a th:href="@{/modificarusuario/{id}(id=${usuario.id})}">modificar usuario</a>
+                   <a th:href="@{/modificarUsuario/{id}(id=${usuario.id})}">modificar usuario</a>
                     &nbsp;&nbsp;&nbsp;
                    <a th:href="@{/eliminarUsuario/{id}(id=${usuario.id})}">eliminar</a>
                 </td>
+                <td>like</td>
+                <td>dislike</td>
             </tr>
         </tbody>
     </table>

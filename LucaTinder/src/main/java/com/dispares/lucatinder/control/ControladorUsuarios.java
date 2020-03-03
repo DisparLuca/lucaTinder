@@ -88,9 +88,24 @@ public class ControladorUsuarios {
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
 	    this.servUsuario.salvarUsuario(usuario);	     
-	    return "redirect:/";
+	    return "redirect:/listausuarios";
 	}
 	
+	/*
+	@RequestMapping("/modificarusuario/{id}")
+	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
+	    ModelAndView mav = new ModelAndView("modificarusuario");
+	    Optional<Usuario> usuario = this.servUsuario.getUsuario(id);
+	    mav.addObject("usuario", usuario.get()); 
+	    return mav;
+	}
+	*/
+	@GetMapping("/modificarUsuario/{id}")
+	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
+		logger.info("-- en EDIT");
+		model.addAttribute("usuario", servUsuario.getUsuario(id).get());
+		return "modificiarusuario";		
+	}
 	
 	/**	
 	 * Este metodo devuelve el usuario que se ha requerido a una id
@@ -138,7 +153,7 @@ public class ControladorUsuarios {
 	public ModelAndView eliminarUsuario(@PathVariable(name = "id")  int id) {
 		logger.info("-- en metodo eliminarUsuario");
 		servUsuario.delete(id);
-		return new ModelAndView("redirect:/");		
+		return new ModelAndView("redirect:/listausuarios");		
 	}
 	
 }
