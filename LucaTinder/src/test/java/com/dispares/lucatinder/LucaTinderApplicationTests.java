@@ -61,8 +61,8 @@ class LucaTinderApplicationTests {
 		ArrayList<String> categorias = new ArrayList<String>();
 		categorias.add("test1");
 		categorias.add("test1");
-		Usuario usuario = new Usuario("longevina", 100, 1, "Ciudadlongeva", categorias, "fotovintage");
-		servicio.salvarUsuario(usuario);
+		//Usuario usuario = new Usuario("longevina", 100, "1", "Ciudadlongeva", categorias, "fotovintage");
+		//servicio.salvarUsuario(usuario);
 		/*servicio.recuperarUsuario(usuario.getNombre());
 		assertThat(servicio.recuperarUsuario(usuario.getNombre())).isEqualTo(usuario);
 		servicio.borrarUsuario();*/

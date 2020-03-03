@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.service;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -55,8 +56,15 @@ public class ServiciosImpl implements Servicios{
 	public void modificarUsuario(Usuario usuario) {
 		usuarioDao.save(usuario);
 	}
-	
-
+	/**
+	 * @author David
+	 * @param model
+	 * @return metodo que devuelve la lista de todos los usuarios
+	 */
+	@Override
+	public List<Usuario> listarUsuarios() {
+		return usuarioDao.findAll();
+	}
 	/**
 	 * Metodo que introduce n cantidad de usuarios en la base de datos
 	 * @author Luca grupo 3
@@ -87,5 +95,7 @@ public class ServiciosImpl implements Servicios{
 		}
 		logger.info("Se han añadido los usuarios");
 	}
+
+	
 
 }
