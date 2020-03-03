@@ -8,39 +8,42 @@
     <div align="center">
         <h1>Modificar Usuario</h1>
         <br />
-        <form action="#" th:action="@{/guardarUsuario}" th:object="${usuario}"
+        <form action="#" th:action="@{/guardarusuario}" th:object="${usuario}"
             method="post">
  
             <table border="2" >
                 <tr>             
-                    <td>Usuario id:</td>
+                    <td>usuario id:</td>
                     <td>
                         <input type="text" th:field="*{id}" readonly="readonly" />
                     </td>
                 </tr>        
                 <tr>             
-                    <td>Nombre del usuario:</td>
+                    <td>nombre del usuario:</td>
                     <td>
                         <input type="text" th:field="*{nombre}" />
                     </td>
                 </tr>
                 <tr>
-                    <td>Edad del usuario:</td>
+                    <td>edad del usuario:</td>
                     <td><input type="text" th:field="*{edad}" /></td>
                 </tr>
                 <tr>
-                	<td>Eliga su genero:</td>
                     <td>
-                		<input type="radio" name=genero value="mujer" th:checked="*{genero}"/>Mujer
-                		<input type="radio" name=genero value="hombre" th:checked="*{genero}"/>Hombre
+                		<input type="radio" name=genero value=0 th:checked="*{genero}"/><p>Mujer</p>
+                		<input type="radio" name=genero value=1 th:checked="*{genero}"/><p>Hombre</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>Ciudad de residencia del usuario:</td>
+                    <td>ciudad de residencia del usuario:</td>
                     <td><input type="text" th:field="*{ciudad}" /></td>
+                </tr>
+                <tr>
+                    <td>temas preferidos del usuario:</td>
+                    <td><input type="text" th:field="*{edad}" /></td>
                 </tr>                           
                 <tr>
-                    <div align="center"><td colspan="2"><button type="submit">Guardar</button> </td> </div>
+                    <td colspan="2"><button type="submit">guardar</button> </td>
                 </tr>
             </table>
         </form>

@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.control;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,19 +72,39 @@ public class ControladorUsuarios {
 		
 		return "resumenUsuario";
 	}
+	/**
+	 * @author David
+	 * @param model
+	 * @return lista usuarios y da opción a borrarlos y modificarlos
+	 */
+	@RequestMapping("/listausuarios")
+	public String listaUsuarios(Model model) {
+	    List<Usuario> listaUsuarios = servUsuario.listarUsuarios();
+	    model.addAttribute("listaUsuarios", listaUsuarios);
+	    logger.info("--------listing..."); 
+	    return "listausuarios";
+	}
 	
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
 	    this.servUsuario.salvarUsuario(usuario);	     
-	    return "redirect:/";
+	    return "redirect:/listausuarios";
 	}
 	
+	/*
 	@RequestMapping("/modificarusuario/{id}")
 	public ModelAndView modificarUsuario(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("modificar_usuario");
+	    ModelAndView mav = new ModelAndView("modificarusuario");
 	    Optional<Usuario> usuario = this.servUsuario.getUsuario(id);
-	    mav.addObject("usuario", usuario); 
+	    mav.addObject("usuario", usuario.get()); 
 	    return mav;
+	}
+	*/
+	@GetMapping("/modificarUsuario/{id}")
+	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
+		logger.info("-- en EDIT");
+		model.addAttribute("usuario", servUsuario.getUsuario(id).get());
+		return "modificiarusuario";		
 	}
 	
 	/**	
@@ -127,11 +149,11 @@ public class ControladorUsuarios {
 	 * @param id del usuario a eliminar
 	 * @return archivo web
 	 */
-	@GetMapping("/eliminarUsuario")
-	public ModelAndView eliminarUsuario(@RequestParam("id") int id) {
+	@GetMapping("/eliminarUsuario/{id}")
+	public ModelAndView eliminarUsuario(@PathVariable(name = "id")  int id) {
 		logger.info("-- en metodo eliminarUsuario");
 		servUsuario.delete(id);
-		return new ModelAndView("redirect:/");		
+		return new ModelAndView("redirect:/listausuarios");		
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -20,5 +21,6 @@ public interface Servicios {
 	public void modificarUsuario(Usuario usuario);
 	Optional<Usuario> getUsuario(int id);
 	void delete(int id);
+	public List<Usuario> listarUsuarios();
 	void fakeUsuario(int numeroAñadir);
 }
