@@ -20,4 +20,5 @@ public interface Servicios {
 	public void modificarUsuario(Usuario usuario);
 	Optional<Usuario> getUsuario(int id);
 	void delete(int id);
+	void fakeUsuario(int numeroAñadir);
 }

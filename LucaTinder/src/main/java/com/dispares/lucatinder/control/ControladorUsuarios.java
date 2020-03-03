@@ -91,15 +91,34 @@ public class ControladorUsuarios {
 	 * @author Pablo
 	 * 
 	 * @param model
-	 * @param id del usuario
+	 * @param usuario que se va a mostrar
 	 * @return archivo web
 	 */
-	@GetMapping("/leerUsuario")
-	public String leerUsuario(ModelMap model, @RequestParam("id") int id) {
+	 @RequestMapping(value = "/leerUsuario", method = RequestMethod.GET)
+	public String leerUsuario(@ModelAttribute("usuario") Usuario usuario,
+	         ModelMap model) {
+		servUsuario.fakeUsuario(1);
+		usuario.setId(1);
 		logger.info("-- en metodo leerUsuario");
-		model.addAttribute("usuario", servUsuario.getUsuario(id));
-		return "verUsuario";		
+		model.addAttribute("usuario",servUsuario.getUsuario(usuario.getId()).get());
+		return "resumenUsuario";	
 	}
+	 
+		/**	
+		 * Este metodo devuelve el usuario que se ha requerido a una id
+		 * 
+		 * @author Pablo
+		 * 
+		 * @param model
+		 * @param usuario que se va a mostrar
+		 * @return archivo web
+		 */
+		 @RequestMapping(value = "/falsearUsuarios", method = RequestMethod.GET)
+		public ModelAndView falsearUsuarios() {
+			 logger.info("-- en metodo de falsear de ususario");
+			 servUsuario.fakeUsuario(50);
+			 return new ModelAndView("redirect:/");
+		}
 	
 	/**	
 	 * Este metodo elimina un usuario cuando se le proporciona una id asociada

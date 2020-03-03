@@ -62,11 +62,11 @@ public class ServiciosImpl implements Servicios{
 	 * @author Luca grupo 3
 	 * @param numero de usuarios falsos que se van a añadir a la base de datos
 	 */
-
+	@Override
 	public void fakeUsuario(int numeroAñadir) {
 		logger.info("Se van a añadir: " + numeroAñadir + " usuarios");
 		Faker faker = new Faker(new Locale("es-ES"));
-		for(int i=0; i<numeroAñadir; i++) {
+		for(int i=1; i<=numeroAñadir; i++) {
 			
 			Usuario usuario = new Usuario();
 			
@@ -79,7 +79,10 @@ public class ServiciosImpl implements Servicios{
 				usuario.setGenero("hombre");	
 			}
 			usuario.setCiudad(faker.address().cityName());
-			usuarioDao.save(usuario);	
+			usuario.setId(i);
+			//usuarioDao.save(usuario);
+			salvarUsuario(usuario);
+						
 		}
 		logger.info("Se han añadido los usuarios");
 	}
