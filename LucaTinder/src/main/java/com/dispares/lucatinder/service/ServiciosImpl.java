@@ -88,6 +88,7 @@ public class ServiciosImpl implements Servicios{
 			}
 			usuario.setCiudad(faker.address().cityName());
 			usuario.setId(i);
+			usuario.setFoto("https://3.bp.blogspot.com/-DZTmmJl4faA/Wnnb5Fg46rI/AAAAAAAAACs/qyQGOEMMVh4M85dG82Tr3nytEf29AKm4wCPcBGAYYCw/s1600/beagle-adulto.jpg");
 			//usuarioDao.save(usuario);
 			salvarUsuario(usuario);
 						
