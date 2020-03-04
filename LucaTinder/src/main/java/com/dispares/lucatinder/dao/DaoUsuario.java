@@ -11,5 +11,7 @@ import com.dispares.lucatinder.model.Usuario;
  */
 public interface DaoUsuario extends JpaRepository<Usuario, Integer>, DaoUsuarioCustom {
 
+	Integer IdUsuarioLogeado(String username);
+
 
 }

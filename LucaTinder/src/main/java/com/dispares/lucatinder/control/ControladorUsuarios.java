@@ -50,6 +50,8 @@ public class ControladorUsuarios {
 	public String ver(@Valid Usuario user,
 			BindingResult result, 
 			ModelMap model) {
+		
+		System.out.println(servUsuario.getIdUsuarioLogeado());
 		return "verUsuario";
 	}
 	

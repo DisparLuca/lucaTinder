@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +30,7 @@ public class ServiciosImpl implements Servicios{
 	
 	@Autowired
 	DaoUsuario usuarioDao;
-	
+
 	@Override
 	public void salvarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
@@ -95,6 +100,18 @@ public class ServiciosImpl implements Servicios{
 		logger.info("Se han añadido los usuarios");
 	}
 
-	
+	@Override
+	public Integer getIdUsuarioLogeado(){
+		UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Integer idUsuarioLogeado = null;
+		
+		if(!(auth instanceof AnonymousAuthenticationToken)) {
+			user = (UserDetails) auth.getPrincipal();
+			
+			idUsuarioLogeado = (Integer) usuarioDao.IdUsuarioLogeado(user.getUsername());
+		}
+		return idUsuarioLogeado;
+	}
 
 }

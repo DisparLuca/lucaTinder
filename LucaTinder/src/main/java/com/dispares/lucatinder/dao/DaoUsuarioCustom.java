@@ -12,4 +12,6 @@ public interface DaoUsuarioCustom {
 
 	List<Usuario> listarDescartes(int id_usuario);
 
+	Integer IdUsuarioLogeado(String usuario);
+
 }
