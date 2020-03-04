@@ -51,6 +51,17 @@ public class ControladorUsuarios {
 	 * @author jesús
 	 * 
 	 */
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	
+	/**	
+	 * este metodo inicia una sesion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";
