@@ -1,7 +1,9 @@
 package com.dispares.lucatinder.control;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -149,9 +151,8 @@ public class ControladorUsuarios {
 	}
 	 
 	 @RequestMapping(value = "/leerListaUsuariosRest", method = RequestMethod.GET)
-	public Usuario leerListaUsuariosRest() {
-		servUsuario.getUsuario(1).get();
-		return servUsuario.getUsuario(1).get();	
+	public Stream<Usuario> leerListaUsuariosRest() {
+		return servUsuario.getLikeados(1).stream();
 	}
 	 
 		/**	
