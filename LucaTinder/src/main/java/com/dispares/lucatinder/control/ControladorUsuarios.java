@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.control;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -36,7 +37,6 @@ import com.dispares.lucatinder.service.ServiciosImpl;
  * Controlador de usuarios con anotaciones de Spring
  * @author Equipo3 LucaTinder
  */
-
 @Controller
 public class ControladorUsuarios {
 	
@@ -45,14 +45,32 @@ public class ControladorUsuarios {
 	@Autowired
 	Servicios servUsuario;
 	
+	/**	
+	 * este metodo inicia una sesion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";
 	}
 	
+	/**	
+	 * este metodo sale de la sesion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/logout")
 	public void logout() {	}
 	
+	/**	
+	 * este metodo auxiliar para pruebas
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/ver")
 	public String ver(@Valid Usuario user,
 			BindingResult result, 
@@ -60,6 +78,14 @@ public class ControladorUsuarios {
 		return "verUsuario";
 	}
 	
+	/**
+	 * metodo para registrar usuarios
+	 * 
+	 * @author Luca grupo 3
+	 * 
+	 * @param ModelMap model
+	 * @return String
+	 */
 	@GetMapping("/registroUsuario")
 	public String newUser(ModelMap model) {
 		 logger.info("entra en newUser"); 
@@ -104,9 +130,45 @@ public class ControladorUsuarios {
 	    List<Usuario> listaUsuarios = servUsuario.listarUsuarios();
 	    model.addAttribute("listaUsuarios", listaUsuarios);
 	    logger.info("--------listing..."); 
-	    return "listausuarios";
+	    return "listausuarios_sin_id";
 	}
-		
+	
+	/**
+	 * @author Jesús
+	 * @param model
+	 * @return lista usuarios y da opción a borrarlos y modificarlos
+	 */
+	@RequestMapping("/listausuarios/like")
+	public String listaUsuariosLike(Model model) {
+	    List<Usuario> listaUsuarios = servUsuario.getListaLike();
+	    model.addAttribute("listaUsuarios", listaUsuarios);
+	    logger.info("--------listing..."); 
+	    return "listausuarios_sin_id";
+	}
+	
+	
+	/**
+	 * metodo para dar like o dislike
+	 * 
+	 * @author jesus
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
+	@GetMapping("/darLike/{id}")
+	public String darLike(@PathVariable(name = "id")  int id,@RequestParam int like, ModelMap model) {
+		logger.info("-- en dar like");
+		System.out.println(like + "  "+ id);
+		servUsuario.setLike(id, like);
+		 return "redirect:/listausuarios/like";	
+	}
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param usuario
+	 * @return String
+	 */
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
 	    this.servUsuario.salvarUsuario(usuario);	     
@@ -122,11 +184,35 @@ public class ControladorUsuarios {
 	    return mav;
 	}
 	*/
+	
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
 	@GetMapping("/modificarUsuario/{id}")
 	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
 		logger.info("-- en EDIT");
 		model.addAttribute("usuario", servUsuario.getUsuario(id).get());
 		return "modificarusuario";		
+	}
+	
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
+	@GetMapping("/modificarUsuario")
+	public String modificarUsuario( ModelMap model) {
+		logger.info("-- en EDIT");
+		model.addAttribute("usuario", servUsuario.getUsuario(servUsuario.getIdUsuarioLogeado()).get());
+		return "modificiarusuario";		
 	}
 	
 	/**	
@@ -175,6 +261,19 @@ public class ControladorUsuarios {
 	public ModelAndView eliminarUsuario(@PathVariable(name = "id")  int id) {
 		logger.info("-- en metodo eliminarUsuario");
 		servUsuario.delete(id);
+		return new ModelAndView("redirect:/listausuarios");		
+	}
+	
+	/**	
+	 * Este metodo elimina un usuario cuando se le proporciona una id asociada
+	 * 
+	 * @author jesus
+	 * @return archivo web
+	 */
+	@GetMapping("/eliminarUsuario")
+	public ModelAndView eliminarUsuario() {
+		logger.info("-- en metodo eliminarUsuario");
+		servUsuario.delete(servUsuario.getIdUsuarioLogeado());
 		return new ModelAndView("redirect:/listausuarios");		
 	}
 	

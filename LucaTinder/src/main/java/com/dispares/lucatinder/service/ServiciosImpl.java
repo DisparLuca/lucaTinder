@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +30,12 @@ public class ServiciosImpl implements Servicios{
 	
 	@Autowired
 	DaoUsuario usuarioDao;
-	
+
+	/**	
+	 * metodo para salvar usuario en base de datos
+	 * 
+	 * @author david
+	 */
 	@Override
 	public void salvarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
@@ -52,6 +62,11 @@ public class ServiciosImpl implements Servicios{
 		usuarioDao.deleteById(id);
 	}
 	
+	/**	
+	 * metodo para modificar un usuario en base de datos
+	 * 
+	 * @author david
+	 */
 	@Override
 	public void modificarUsuario(Usuario usuario) {
 		usuarioDao.save(usuario);
@@ -96,6 +111,27 @@ public class ServiciosImpl implements Servicios{
 		logger.info("Se han añadido los usuarios");
 	}
 
+	
+	/**	
+	 * metodo para obtener el id de usuario logueado
+	 * 
+	 * @author jesús
+	 * @return id de usuario
+	 */
+	@Override
+	public Integer getIdUsuarioLogeado(){
+		UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Integer idUsuarioLogeado = null;
+		
+		if(!(auth instanceof AnonymousAuthenticationToken)) {
+			user = (UserDetails) auth.getPrincipal();
+			
+			idUsuarioLogeado = (Integer) usuarioDao.IdUsuarioLogeado(user.getUsername());
+		}
+		return idUsuarioLogeado;
+	}
+	
 	@Override
 	public List<Usuario> getDescartes(int id) {
 		
@@ -108,5 +144,26 @@ public class ServiciosImpl implements Servicios{
 	}
 
 	
-
+	/**	
+	 * metodo para obtener lista de todos los usuarios a los que ha dado like
+	 * 
+	 * @author jesús
+	 * @return id de usuario
+	 */
+	@Override
+	public  List<Usuario> getListaLike(){
+		return usuarioDao.getLikeados(getIdUsuarioLogeado());
+	}
+	
+	/**	
+	 * metodo para obtener dar like
+	 * 
+	 * @author jesús
+	 * 
+	 */
+	@Override
+	public  void setLike(int idB, int like){
+		usuarioDao.setLike(getIdUsuarioLogeado(), idB, like);
+	}
+	
 }
