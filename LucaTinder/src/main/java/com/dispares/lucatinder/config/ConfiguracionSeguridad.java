@@ -59,6 +59,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/leerUsuario").hasAuthority("USER")
 			.antMatchers("/eliminarUsuario").hasAuthority("USER")
 			.antMatchers("/listarDescartes").hasAuthority("USER")
+			.antMatchers("/leerUsuarioRest").permitAll()
 			
 			.anyRequest().authenticated()
 				.and()

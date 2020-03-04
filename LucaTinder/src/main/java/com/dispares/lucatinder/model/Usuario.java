@@ -1,5 +1,6 @@
 package com.dispares.lucatinder.model;
 
+import java.io.Serializable;
 /**
  * Clase Usuario con todas los atributos necesarios y con las anotaciones de persistencia para la base de datos
  * @author Luca grupo 3
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements Serializable{
 	
 	
 	@Id
