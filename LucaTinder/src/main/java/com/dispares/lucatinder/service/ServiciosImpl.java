@@ -129,5 +129,27 @@ public class ServiciosImpl implements Servicios{
 		}
 		return idUsuarioLogeado;
 	}
-
+	
+	/**	
+	 * metodo para obtener lista de todos los usuarios a los que ha dado like
+	 * 
+	 * @author jesús
+	 * @return id de usuario
+	 */
+	@Override
+	public  List<Usuario> getListaLike(){
+		return usuarioDao.getLikeados(getIdUsuarioLogeado());
+	}
+	
+	/**	
+	 * metodo para obtener dar like
+	 * 
+	 * @author jesús
+	 * 
+	 */
+	@Override
+	public  void setLike(int idB, int like){
+		usuarioDao.setLike(getIdUsuarioLogeado(), idB, like);
+	}
+	
 }

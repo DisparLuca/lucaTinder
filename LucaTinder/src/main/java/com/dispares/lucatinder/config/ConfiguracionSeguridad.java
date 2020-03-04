@@ -75,6 +75,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/modificarusuario/{id}").hasAuthority("USER")
 			.antMatchers("/leerUsuario").hasAuthority("USER")
 			.antMatchers("/eliminarUsuario").hasAuthority("USER")
+			.antMatchers("/darLike/**").hasAuthority("USER")
 			.anyRequest().authenticated()
 				.and()
 			.csrf()

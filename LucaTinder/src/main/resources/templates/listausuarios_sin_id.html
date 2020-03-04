@@ -34,8 +34,12 @@
                     &nbsp;&nbsp;&nbsp;
                    <a th:href="@{/eliminarUsuario}">eliminar</a>
                 </td>
-                <td>like</td>
-                <td>dislike</td>
+                <td>
+                	 <a th:href="@{/darLike/{id}(id=${usuario.id}, like=1)}">like</a>
+                </td>
+                <td>
+                	 <a th:href="@{/darLike/{id}(id=${usuario.id}, like=0)}">dislike</a>
+                </td>
             </tr>
         </tbody>
     </table>

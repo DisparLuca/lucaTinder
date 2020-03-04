@@ -24,4 +24,6 @@ public interface Servicios {
 	public List<Usuario> listarUsuarios();
 	void fakeUsuario(int numeroAñadir);
 	public Integer getIdUsuarioLogeado();
+	List<Usuario> getListaLike();
+	void setLike(int idB, int like);
 }

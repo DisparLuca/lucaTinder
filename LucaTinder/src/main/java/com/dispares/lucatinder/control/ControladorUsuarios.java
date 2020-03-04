@@ -129,6 +129,35 @@ public class ControladorUsuarios {
 	}
 	
 	/**
+	 * @author Jesús
+	 * @param model
+	 * @return lista usuarios y da opción a borrarlos y modificarlos
+	 */
+	@RequestMapping("/listausuarios/like")
+	public String listaUsuariosLike(Model model) {
+	    List<Usuario> listaUsuarios = servUsuario.getListaLike();
+	    model.addAttribute("listaUsuarios", listaUsuarios);
+	    logger.info("--------listing..."); 
+	    return "listausuarios_sin_id";
+	}
+	
+	
+	/**
+	 * metodo para dar like o dislike
+	 * 
+	 * @author jesus
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
+	@GetMapping("/darLike/{id}")
+	public String darLike(@PathVariable(name = "id")  int id,@RequestParam int like, ModelMap model) {
+		logger.info("-- en dar like");
+		System.out.println(like + "  "+ id);
+		servUsuario.setLike(id, like);
+		 return "redirect:/listausuarios/like";	
+	}
+	/**
 	 * metodo para modificar usuario
 	 * 
 	 * @author Luca grupo 3

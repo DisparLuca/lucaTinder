@@ -18,4 +18,6 @@ public interface DaoUsuarioCustom {
 
 	Integer IdUsuarioLogeado(String usuario);
 
+	void setLike(int idA, int idB, int like);
+
 }

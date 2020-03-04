@@ -53,10 +53,31 @@ import com.github.javafaker.Faker;
 		@Override
 		public List<Usuario> getLikeados(int id_usuario) {
 			logger.info("Entro en el metodo getLikeados");
-			Query query = entityManager.createNativeQuery("SELECT b.id_usuarios, b.id_usuarios, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuarios AND idA=? AND a.tipo=1;");
+			Query query = entityManager.createNativeQuery("SELECT  b.nombre, b.id_usuario, b.edad, b.genero, b.ciudad, b.categorias, b.foto FROM usuarios b, usuariosLike a WHERE a.idB=b.id_usuario AND idA=? AND a.tipo=1;",Usuario.class);
 			query.setParameter(1, id_usuario);		
 			logger.info("Salgo del metodo getLikeados");
 	        return query.getResultList();
+		}
+		
+		/**añade un like a la lista de like personal
+		 * @author jesus
+		 * @param id del usuario del que se quiere ver a quien ha dado like
+		 *
+		*/
+		@Override
+		public void setLike(int idA, int idB, int like) {
+			logger.info("Entro en el metodo setLike, param: "+idA+" "+idB+" "+like);
+			String aux="INSERT INTO lucatinder.usuarioslike(idA, idB) " + 
+					"SELECT " + idA + ", " + idB + 
+					" WHERE NOT EXISTS(SELECT 1 FROM lucatinder.usuarioslike WHERE idA=" + idA + " and idB=" + idB  + ");";
+			Query query = entityManager.createNativeQuery(aux);
+			Query query1 = entityManager.createNativeQuery("UPDATE `lucatinder`.`usuarioslike` SET `tipo` = " + like + " WHERE (idA=" + idA + " and idB=" + idB +");");
+			query.executeUpdate();
+			query1.executeUpdate();
+			logger.info("Salgo del metodo getLikeados");
+			//UPDATE `lucatinder`.`usuarioslike` SET `tipo` = '0' WHERE (`idusuariosLike` = '1');
+
+	       
 		}
 		
 		/**Metodo que devuelve una lista de todos los usuarios a los que ha dado dislike un id
@@ -97,4 +118,6 @@ import com.github.javafaker.Faker;
 			logger.info("Salgo del metodo IdUsuarioLogeado");
 			return resultado;
 		}
+
+
 	}
