@@ -125,7 +125,7 @@ public class ControladorUsuarios {
 	    List<Usuario> listaUsuarios = servUsuario.listarUsuarios();
 	    model.addAttribute("listaUsuarios", listaUsuarios);
 	    logger.info("--------listing..."); 
-	    return "listausuarios";
+	    return "listausuarios_sin_id";
 	}
 	
 	/**
@@ -163,6 +163,21 @@ public class ControladorUsuarios {
 	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
 		logger.info("-- en EDIT");
 		model.addAttribute("usuario", servUsuario.getUsuario(id).get());
+		return "modificiarusuario";		
+	}
+	
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
+	@GetMapping("/modificarUsuario")
+	public String modificarUsuario( ModelMap model) {
+		logger.info("-- en EDIT");
+		model.addAttribute("usuario", servUsuario.getUsuario(servUsuario.getIdUsuarioLogeado()).get());
 		return "modificiarusuario";		
 	}
 	
@@ -215,4 +230,17 @@ public class ControladorUsuarios {
 		return new ModelAndView("redirect:/listausuarios");		
 	}
 	
+	
+	/**	
+	 * Este metodo elimina un usuario cuando se le proporciona una id asociada
+	 * 
+	 * @author jesus
+	 * @return archivo web
+	 */
+	@GetMapping("/eliminarUsuario")
+	public ModelAndView eliminarUsuario() {
+		logger.info("-- en metodo eliminarUsuario");
+		servUsuario.delete(servUsuario.getIdUsuarioLogeado());
+		return new ModelAndView("redirect:/listausuarios");		
+	}
 }

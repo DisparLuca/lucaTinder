@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>lista de usuarios</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div align="center">
+    <h1>Listado de usuarios</h1>
+    <br/><br/>
+    <table border="1" >
+        <thead>
+            <tr>
+             <th>id</th>
+                <th>nombre</th>
+				<th>edad</th>
+				<th>género</th>
+				<th>ciudad</th>
+				<th>foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${listaUsuarios}">
+            <td><span th:text="${usuario.id}" /></td>
+                <td><span th:text="${usuario.nombre}" /></td>
+				<td><span th:text="${usuario.edad}" /></td>
+				<td><span th:text="${usuario.genero}" /></td>
+				<td><span th:text="${usuario.ciudad}" /></td>
+				<td><img src="https://solutionssap.com/wp-content/uploads/2016/05/Dummy.png"/></td>
+				<td>                   
+                   <a th:href="@{/modificarUsuario}">modificar usuario</a>
+                    &nbsp;&nbsp;&nbsp;
+                   <a th:href="@{/eliminarUsuario}">eliminar</a>
+                </td>
+                <td>like</td>
+                <td>dislike</td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
