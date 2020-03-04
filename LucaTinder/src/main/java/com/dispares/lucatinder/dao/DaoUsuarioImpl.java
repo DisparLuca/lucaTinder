@@ -20,7 +20,10 @@ import com.dispares.lucatinder.model.Usuario;
 import com.github.javafaker.Faker;
 
 
-
+/**
+ * 
+ * @author Luca grupo 3
+ */
 	@Repository
 	@Transactional(readOnly = true)
 	public class DaoUsuarioImpl implements DaoUsuarioCustom {

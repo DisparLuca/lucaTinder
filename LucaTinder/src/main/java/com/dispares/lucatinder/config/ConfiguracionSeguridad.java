@@ -15,7 +15,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import com.dispares.lucatinder.security.Codificador;
 
 
-
+/**	
+ * clase para realizar el registro de usuarios 
+ * 
+ * @author jesús
+ * 
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -33,6 +38,12 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	@Value("${spring.queries.users-rol-query}")
 	private String usersRolQuery;
 	
+	/**	
+	 * este metodo configura la autentificacion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
@@ -44,6 +55,12 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	}
 	
 	
+	/**	
+	 * este metodo configura el protocolo http
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -80,6 +97,12 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 				.accessDeniedPage("/access-denied");
 	}
 	
+	/**	
+	 * este metodo configura la seguridad de la web
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	//Para ignorar la seguridad en estos ficheros
 	@Override
 	public void configure(WebSecurity web) throws Exception {

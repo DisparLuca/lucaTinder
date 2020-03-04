@@ -31,6 +31,11 @@ public class ServiciosImpl implements Servicios{
 	@Autowired
 	DaoUsuario usuarioDao;
 
+	/**	
+	 * metodo para salvar usuario en base de datos
+	 * 
+	 * @author david
+	 */
 	@Override
 	public void salvarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
@@ -57,6 +62,11 @@ public class ServiciosImpl implements Servicios{
 		usuarioDao.deleteById(id);
 	}
 	
+	/**	
+	 * metodo para modificar un usuario en base de datos
+	 * 
+	 * @author david
+	 */
 	@Override
 	public void modificarUsuario(Usuario usuario) {
 		usuarioDao.save(usuario);
@@ -100,6 +110,12 @@ public class ServiciosImpl implements Servicios{
 		logger.info("Se han añadido los usuarios");
 	}
 
+	/**	
+	 * metodo para obtener el id de usuario logueado
+	 * 
+	 * @author jesús
+	 * @return id de usuario
+	 */
 	@Override
 	public Integer getIdUsuarioLogeado(){
 		UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

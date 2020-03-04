@@ -38,14 +38,32 @@ public class ControladorUsuarios {
 	@Autowired
 	Servicios servUsuario;
 	
+	/**	
+	 * este metodo inicia una sesion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";
 	}
 	
+	/**	
+	 * este metodo sale de la sesion
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/logout")
 	public void logout() {	}
 	
+	/**	
+	 * este metodo auxiliar para pruebas
+	 * 
+	 * @author jesús
+	 * 
+	 */
 	@GetMapping("/ver")
 	public String ver(@Valid Usuario user,
 			BindingResult result, 
@@ -55,6 +73,14 @@ public class ControladorUsuarios {
 		return "verUsuario";
 	}
 	
+	/**
+	 * metodo para registrar usuarios
+	 * 
+	 * @author Luca grupo 3
+	 * 
+	 * @param ModelMap model
+	 * @return String
+	 */
 	@GetMapping("/registroUsuario")
 	public String newUser(ModelMap model) {
 		 logger.info("entra en newUser"); 
@@ -102,6 +128,13 @@ public class ControladorUsuarios {
 	    return "listausuarios";
 	}
 	
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param usuario
+	 * @return String
+	 */
 	@RequestMapping(value = "/guardarUsuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
 	    this.servUsuario.salvarUsuario(usuario);	     
@@ -117,6 +150,15 @@ public class ControladorUsuarios {
 	    return mav;
 	}
 	*/
+	
+	/**
+	 * metodo para modificar usuario
+	 * 
+	 * @author Luca grupo 3
+	 * @param int id
+	 * @param ModelMap model
+	 * @return String
+	 */
 	@GetMapping("/modificarUsuario/{id}")
 	public String modificarUsuario(@PathVariable(name = "id")  int id, ModelMap model) {
 		logger.info("-- en EDIT");
