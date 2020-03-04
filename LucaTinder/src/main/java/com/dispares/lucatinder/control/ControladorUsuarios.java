@@ -36,7 +36,7 @@ import com.dispares.lucatinder.service.ServiciosImpl;
  * Controlador de usuarios con anotaciones de Spring
  * @author Equipo3 LucaTinder
  */
-@RestController
+
 @Controller
 public class ControladorUsuarios {
 	
@@ -147,19 +147,6 @@ public class ControladorUsuarios {
 		return "resumenUsuario";	
 	}
 	 
-	 @RequestMapping(value = "/leerUsuarioRest", method = RequestMethod.GET)
-	public Usuario leerUsuarioRest() {
-		servUsuario.getUsuario(1).get();
-		return servUsuario.getUsuario(1).get();	
-	}
-	 
-	 @CrossOrigin(origins = "http://localhost:4200")
-	 @RequestMapping(value = "/leerListaUsuariosRest", method = RequestMethod.GET)
-	public Collection<Usuario> leerListaUsuariosRest() {
-		 System.out.println(servUsuario.getLikeados(1).stream().collect(Collectors.toList()));
-		return servUsuario.getLikeados(1).stream().collect(Collectors.toList());
-	}
-	 
 		/**	
 		 * Este metodo devuelve el usuario que se ha requerido a una id
 		 * 
@@ -169,11 +156,12 @@ public class ControladorUsuarios {
 		 * @param usuario que se va a mostrar
 		 * @return archivo web
 		 */
+	 @CrossOrigin(origins = "http://localhost:4200")
 		 @RequestMapping(value = "/falsearUsuarios", method = RequestMethod.GET)
-		public ModelAndView falsearUsuarios() {
+	public ModelAndView falsearUsuarios() {
 			 logger.info("-- en metodo de falsear de ususario");
 			 servUsuario.fakeUsuario(50);
-			 return new ModelAndView("redirect:/");
+			 return new ModelAndView("redirect:/listausuarios");
 		}
 	
 	/**	
@@ -198,11 +186,11 @@ public class ControladorUsuarios {
 	}
 	
 	@GetMapping("/listarLikes/{id}")
+
 	public String listarLikes(ModelMap model, @PathVariable(name = "id") int id) {
 		logger.info("-- en metodo ListarLikes");
 		model.addAttribute("listaUsuarios", servUsuario.getLikeados(id));
 		return "listausuarios";		
 	}
-	
 	
 }
