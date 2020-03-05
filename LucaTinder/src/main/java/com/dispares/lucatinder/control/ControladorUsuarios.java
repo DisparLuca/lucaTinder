@@ -336,6 +336,15 @@ public class ControladorUsuarios {
 		return "listausuarios";
 	}
 
+	
+	@GetMapping("/listarDescartes")
+	public String listarDescartes(ModelMap model) {
+		logger.info("-- en metodo ListarDescartes");
+		model.addAttribute("listaUsuarios", servUsuario.getDescartes(servUsuario.getIdUsuarioLogeado()));
+		return "listausuarios";
+	}
+	
+	
 	@GetMapping("/listarLikes/{id}")
 
 	public String listarLikes(ModelMap model, @PathVariable(name = "id") int id) {

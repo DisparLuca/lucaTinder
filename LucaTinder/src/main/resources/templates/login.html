@@ -1,12 +1,35 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Spring Web : s04.dblogin</title>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 </head>
-<body class="container">
+<body>
+
+	<div class="navbar-header">
+     <ul>
+      <div class="cell"><a href="/">Inicio</a></div>
+      <div class="cell"><a href="/registroLucatinder">registroLucatinder</a></div>
+      <div class="cell"><a href="/login">login</a></div>
+      <div class="cell"><a href="/logout">logout</a></div>
+     </ul>
+	</div>
+	
+	
 	<h1>Spring security: login</h1>
         <form th:action="@{/login}" method="post">
             <div><label> User Name :</label></div> 
@@ -16,14 +39,11 @@
             <div><input type="submit" value="Sign in"/></div>
         </form>
          	<div th:text="${message}"></div>
-           	<div><a th:href="@{/register}">Register</a></div>
-           	<div><a th:href="@{/protected}">Try to go to protected</a></div>
+           	<div><a th:href="@{/registroLucatinder}">Register</a></div>
         <div th:if="${param.error}">
             Login incorrect.
         </div>
-        <div th:if="${param.error}">
-            Login incorrect.
-        </div>
+
         <div th:if="${param.logout}">
             You have been logged out.
         </div>

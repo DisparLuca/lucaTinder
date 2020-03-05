@@ -18,13 +18,14 @@
 [ RESTYLE TAG ]*/
 * {
 	margin: 0px; 
-	padding: 0px; 
+	padding: 20px; 
 	box-sizing: border-box;
 }
 
 body, html {
 	height: 100%;
 	font-family: sans-serif;
+	background: #c4d3f6;
 }
 
 /* ------------------------------------ */
@@ -252,6 +253,7 @@ iframe {
     font-size: 18px;
     color: #555555;
     line-height: 1.2;
+    padding: 33px 30px;
     font-weight: unset !important;
   }
 
@@ -259,3 +261,20 @@ iframe {
     width: 100% !important;
   }
 }
+
+
+.navbar-header {
+  width: 100%;
+  background: #925757;
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  font-color: #fff;
+  line-height: 1.2;
+  font-weight: unset !important;
+  padding-top: 19px;
+  padding-bottom: 19px;
+}
+
+.navbar-header.cell {
+   padding: 33px;
+  }
