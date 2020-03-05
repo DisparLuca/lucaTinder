@@ -95,19 +95,19 @@ import com.github.javafaker.Faker;
 			return query.getResultList();
 		}
 		
-		/**Metodo que devuelve un id dado el nick (nombre usado para loguearse) de registro (nombre usado para loguearse)
+		
+		
+		/**Metodo que devuelve el id maximo en la bbdd
 		 * @author jesus
-		 * @param nick usuario (nombre usado para loguearse)
-		 * @return id usuario
+		 * @return int
 		*/
 		@Override
-		public Integer IdUsuarioLogeado(String usuario){
+		public int maxIdUsuario(){
 			
-			logger.info("Entro en el metodo IdUsuarioLogeado");
+			logger.info("Entro en el metodo maxIdUsuario");
 			int resultado;
-			Query query = entityManager.createNativeQuery("SELECT id_usuario FROM usuarioclave where nombre=? ;");
-			query.setParameter(1, usuario);			
-			
+			Query query = entityManager.createNativeQuery("SELECT max(id_usuario) FROM lucatinder.usuarios;");			
+			logger.info("Salgo del metodo listarDescartes");
 			try {
 				resultado = (int) query.getSingleResult();
 				
@@ -115,9 +115,8 @@ import com.github.javafaker.Faker;
 				// TODO: handle exception
 				resultado = 0;
 			}
-			logger.info("Salgo del metodo IdUsuarioLogeado");
+			logger.info("Salgo del metodo maxIdUsuario");
 			return resultado;
 		}
-
 
 	}

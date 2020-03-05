@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.dispares.lucatinder.model.ClaveUsuario;
 import com.dispares.lucatinder.model.Usuario;
 
 
@@ -28,4 +29,6 @@ public interface Servicios {
 	public Integer getIdUsuarioLogeado();
 	List<Usuario> getListaLike();
 	void setLike(int idB, int like);
+	void salvarClaveUsuario(ClaveUsuario usuario);
+	int maxIdUsuario();
 }
