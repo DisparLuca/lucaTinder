@@ -28,4 +28,5 @@ public interface Servicios {
 	public Integer getIdUsuarioLogeado();
 	List<Usuario> getListaLike();
 	void setLike(int idB, int like);
+	List<Usuario> getBusquedaSimple();
 }

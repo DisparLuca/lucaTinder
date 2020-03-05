@@ -40,7 +40,7 @@ import com.github.javafaker.Faker;
 		@Override
 		public List<Usuario> getBusquedaSimple() {
 			logger.info("Entro en el metodo getBusquedaSimple");
-			Query query = entityManager.createNativeQuery("SELECT * FROM lucatinder.usuarios ORDER BY RAND() LIMIT 20;");
+			Query query = entityManager.createNativeQuery("SELECT * FROM lucatinder.usuarios ORDER BY RAND() LIMIT 20;",Usuario.class);
 			logger.info("Salgo del metodo getBusquedaSimple");
 	        return query.getResultList();
 		}

@@ -102,11 +102,11 @@ public class ServiciosImpl implements Servicios{
 			int genero= faker.number().numberBetween(1, 2);
 			if(genero==1) {
 				usuario.setGenero("mujer");
-				numeroImagen = faker.number().numberBetween(1, 100);
+				numeroImagen = faker.number().numberBetween(1, 99);
 				urlBase+=  "women/" +Integer.toString(numeroImagen) + ".jpg";
 			}else {
 				usuario.setGenero("hombre");	
-				numeroImagen = faker.number().numberBetween(1, 100);
+				numeroImagen = faker.number().numberBetween(1, 99);
 				urlBase+=  "men/" +Integer.toString(numeroImagen) + ".jpg";
 			}
 			usuario.setCiudad(faker.address().cityName());
@@ -150,6 +150,11 @@ public class ServiciosImpl implements Servicios{
 	public List<Usuario> getLikeados(int id) {
 		return usuarioDao.getLikeados(id);
 	}
+	
+	@Override
+	public List<Usuario> getBusquedaSimple() {
+		return usuarioDao.getBusquedaSimple();
+	}
 
 	
 	/**	
@@ -171,7 +176,7 @@ public class ServiciosImpl implements Servicios{
 	 */
 	@Override
 	public  void setLike(int idB, int like){
-		usuarioDao.setLike(getIdUsuarioLogeado(), idB, like);
+		usuarioDao.setLike(1, idB, like);
 	}
 	
 }
