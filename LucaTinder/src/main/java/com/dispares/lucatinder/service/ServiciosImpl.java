@@ -87,6 +87,7 @@ public class ServiciosImpl implements Servicios{
 	 */
 	@Override
 	public void fakeUsuario(int numeroAñadir) {
+
 		logger.info("Se van a añadir: " + numeroAñadir + " usuarios");
 		Faker faker = new Faker(new Locale("es-ES"));
 		for(int i=1; i<=numeroAñadir; i++) {
@@ -95,16 +96,23 @@ public class ServiciosImpl implements Servicios{
 			
 			usuario.setNombre(faker.name().firstName()+" " + faker.name().lastName());
 			usuario.setEdad(faker.number().numberBetween(1, 100));
-			int genero= (int)Math.floor(Math.random());
-			if(genero<0.5) {
+			String urlBase = "https://randomuser.me/api/portraits/";
+			int numeroImagen=0;
+
+			int genero= faker.number().numberBetween(1, 2);
+			if(genero==1) {
 				usuario.setGenero("mujer");
+				numeroImagen = faker.number().numberBetween(1, 100);
+				urlBase+=  "women/" +Integer.toString(numeroImagen) + ".jpg";
 			}else {
 				usuario.setGenero("hombre");	
+				numeroImagen = faker.number().numberBetween(1, 100);
+				urlBase+=  "men/" +Integer.toString(numeroImagen) + ".jpg";
 			}
 			usuario.setCiudad(faker.address().cityName());
 			usuario.setId(i);
-			usuario.setFoto("https://3.bp.blogspot.com/-DZTmmJl4faA/Wnnb5Fg46rI/AAAAAAAAACs/qyQGOEMMVh4M85dG82Tr3nytEf29AKm4wCPcBGAYYCw/s1600/beagle-adulto.jpg");
-			//usuarioDao.save(usuario);
+			//usuario.setFoto("https://3.bp.blogspot.com/-DZTmmJl4faA/Wnnb5Fg46rI/AAAAAAAAACs/qyQGOEMMVh4M85dG82Tr3nytEf29AKm4wCPcBGAYYCw/s1600/beagle-adulto.jpg");
+			usuario.setFoto(urlBase);
 			salvarUsuario(usuario);
 						
 		}
