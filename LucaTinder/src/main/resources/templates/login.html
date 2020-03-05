@@ -29,7 +29,7 @@
      </ul>
 	</div>
 	
-	
+	<div class="container">
 	<h1>Spring security: login</h1>
         <form th:action="@{/login}" method="post">
             <div><label> User Name :</label></div> 
@@ -39,13 +39,14 @@
             <div><input type="submit" value="Sign in"/></div>
         </form>
          	<div th:text="${message}"></div>
-           	<div><a th:href="@{/registroLucatinder}">Register</a></div>
+           	<div><a th:href="@{/listausuarios}">Register</a></div>
         <div th:if="${param.error}">
             Login incorrect.
         </div>
 
         <div th:if="${param.logout}">
             You have been logged out.
+        </div>
         </div>
     </body>
 </html>

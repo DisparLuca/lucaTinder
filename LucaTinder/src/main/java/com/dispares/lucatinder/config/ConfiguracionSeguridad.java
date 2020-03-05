@@ -88,10 +88,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/listarDescartesRest").permitAll()
 			.antMatchers("/darDisLikeRest").permitAll()
 			.antMatchers("/listarLikesRest").permitAll()
-
 			.antMatchers("/registroLucatinder").permitAll()
 			.antMatchers("/resumenRegistroLucatinder").permitAll()
-
 			.antMatchers("/listarBusquedaSimpleRest").permitAll()
 		
 			.anyRequest().authenticated()

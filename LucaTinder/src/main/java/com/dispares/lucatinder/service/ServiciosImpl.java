@@ -212,5 +212,14 @@ public class ServiciosImpl implements Servicios{
 	public  void setLike(int idB, int like){
 		usuarioDao.setLike(1, idB, like);
 	}
-	
+	/**	
+	 * metodo para obtener dar like
+	 * 
+	 * @author jesús
+	 * 
+	 */
+	@Override
+	public  void setLike1(int idB, int like){
+		usuarioDao.setLike(getIdUsuarioLogeado(), idB, like);
+	}
 }

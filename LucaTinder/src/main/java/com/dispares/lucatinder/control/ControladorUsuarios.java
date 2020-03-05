@@ -213,7 +213,7 @@ public class ControladorUsuarios {
 	public String darLike(@PathVariable(name = "id") int id, @RequestParam int like, ModelMap model) {
 		logger.info("-- en dar like");
 		System.out.println(like + "  " + id);
-		servUsuario.setLike(id, like);
+		servUsuario.setLike1(id, like);
 		return "redirect:/listausuarios/like";
 	}
 

@@ -32,5 +32,6 @@ public interface Servicios {
 	void salvarClaveUsuario(ClaveUsuario usuario);
 	int maxIdUsuario();
 	List<Usuario> getBusquedaSimple();
+	void setLike1(int idB, int like);
 
 }
