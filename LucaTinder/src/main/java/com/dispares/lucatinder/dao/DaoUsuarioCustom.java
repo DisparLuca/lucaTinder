@@ -16,8 +16,8 @@ public interface DaoUsuarioCustom {
 
 	List<Usuario> listarDescartes(int id_usuario);
 
-	Integer IdUsuarioLogeado(String usuario);
-
 	void setLike(int idA, int idB, int like);
+
+	int maxIdUsuario();
 
 }

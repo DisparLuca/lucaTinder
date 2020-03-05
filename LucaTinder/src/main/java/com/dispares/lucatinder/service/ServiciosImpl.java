@@ -18,9 +18,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dispares.lucatinder.dao.DaoUsuario;
 import com.dispares.lucatinder.dao.DaoUsuarioImpl;
+import com.dispares.lucatinder.dao.DaoClave;
+import com.dispares.lucatinder.dao.DaoClaveImpl;
+import com.dispares.lucatinder.model.ClaveUsuario;
 import com.dispares.lucatinder.model.Usuario;
 import com.github.javafaker.Faker;
 
+
+/**
+ * Controlador de usuarios con anotaciones de Spring
+ * 
+ * @author Equipo3 LucaTinder
+ */
 
 @Service
 @Transactional
@@ -30,7 +39,11 @@ public class ServiciosImpl implements Servicios{
 	
 	@Autowired
 	DaoUsuario usuarioDao;
+	
+	@Autowired
+	DaoClave claveDao;
 
+	
 	/**	
 	 * metodo para salvar usuario en base de datos
 	 * 
@@ -40,6 +53,27 @@ public class ServiciosImpl implements Servicios{
 	public void salvarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 		usuarioDao.save(usuario);
+	}
+	
+	/**	
+	 * metodo para salvar clave en base de datos
+	 * 
+	 * @author Jesus
+	 */
+	@Override
+	public void salvarClaveUsuario(ClaveUsuario clave) {
+		// TODO Auto-generated method stub
+		claveDao.save(clave);
+	}
+	
+	/**	
+	 * metodo para obtener id maxs
+	 * 
+	 * @author Jesus
+	 */
+	@Override
+	public int maxIdUsuario() {
+		return usuarioDao.maxIdUsuario();
 	}
 	
 	/**Metodo que devuelve un Usuario,si lo encuentra, cuando se le proporciona un id
@@ -127,7 +161,7 @@ public class ServiciosImpl implements Servicios{
 		if(!(auth instanceof AnonymousAuthenticationToken)) {
 			user = (UserDetails) auth.getPrincipal();
 			
-			idUsuarioLogeado = (Integer) usuarioDao.IdUsuarioLogeado(user.getUsername());
+			idUsuarioLogeado = (Integer) claveDao.IdUsuarioLogeado(user.getUsername());
 		}
 		return idUsuarioLogeado;
 	}

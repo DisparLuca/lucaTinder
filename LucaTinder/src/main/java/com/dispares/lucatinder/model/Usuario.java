@@ -17,6 +17,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+/**
+ * Controlador de usuarios con anotaciones de Spring
+ * 
+ * @author Equipo3 LucaTinder
+ */
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable{

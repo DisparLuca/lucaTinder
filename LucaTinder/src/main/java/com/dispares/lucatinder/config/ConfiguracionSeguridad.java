@@ -16,7 +16,7 @@ import com.dispares.lucatinder.security.Codificador;
 
 
 /**	
- * clase para realizar el registro de usuarios 
+ * clase para realizar la Configuracion de Seguridad
  * 
  * @author jesús
  * 
@@ -73,6 +73,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/ver").hasAuthority("USER")
 			.antMatchers("/resumenUsuario").hasAuthority("USER")
 			.antMatchers("/modificarusuario/{id}").hasAuthority("USER")
+			.antMatchers("/modificarusuario").hasAuthority("USER")
 			.antMatchers("/leerUsuario").hasAuthority("USER")
 			.antMatchers("/eliminarUsuario").hasAuthority("USER")
 			.antMatchers("/listarDescartes").hasAuthority("USER")
@@ -81,6 +82,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/leerListaUsuariosRest").permitAll()
 			.antMatchers("/falsearUsuariosRest").permitAll()
 			.antMatchers("/leerUsuarioRest").permitAll()
+			.antMatchers("/registroLucatinder").permitAll()
+			.antMatchers("/resumenRegistroLucatinder").permitAll()
 			
 			
 			.anyRequest().authenticated()
