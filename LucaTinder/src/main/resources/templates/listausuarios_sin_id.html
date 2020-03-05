@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+		<div class="navbar-header">
+     <ul>
+      <div class="cell"><a href="/">Inicio</a></div>
+      <div class="cell"><a href="/modificarusuario/">modificarusuario/{id}</a></div> 
+      <div class="cell"><a href="/eliminarUsuario">eliminarUsuario</a></div>
+      <div class="cell"><a href="/listarDescartes">listarDescartes</a></div>
+      <div class="cell"><a href="/listausuarios/like">listausuarios/like</a></div>
+      <div class="cell"><a href="/listausuarios">listausuarios</a></div>
+      <div class="cell"><a href="/logout">logout</a></div>
+     </ul>
+	</div>
+	
+	
+<div align="center">
+    <h1>Listado de usuarios</h1>
+    <br/><br/>
+    <table border="1" >
+        <thead>
+            <tr>
+             <th>id</th>
+                <th>nombre</th>
+				<th>edad</th>
+				<th>género</th>
+				<th>ciudad</th>
+				<th>foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${listaUsuarios}">
+            <td><span th:text="${usuario.id}" /></td>
+                <td><span th:text="${usuario.nombre}" /></td>
+				<td><span th:text="${usuario.edad}" /></td>
+				<td><span th:text="${usuario.genero}" /></td>
+				<td><span th:text="${usuario.ciudad}" /></td>
+				<td><img src="https://solutionssap.com/wp-content/uploads/2016/05/Dummy.png"/></td>
+                <td>
+                	 <a th:href="@{/darLike/{id}(id=${usuario.id}, like=1)}">like</a>
+                </td>
+                <td>
+                	 <a th:href="@{/darLike/{id}(id=${usuario.id}, like=0)}">dislike</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
