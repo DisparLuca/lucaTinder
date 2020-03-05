@@ -51,7 +51,7 @@ public class ControladorUsuarios {
 	 * @author jesús
 	 * 
 	 */
-	@GetMapping("/")
+	@GetMapping("")
 	public String index() {
 		return "index";
 	}

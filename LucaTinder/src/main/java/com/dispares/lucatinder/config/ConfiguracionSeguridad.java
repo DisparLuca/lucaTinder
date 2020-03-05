@@ -81,7 +81,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.antMatchers("/leerListaUsuariosRest").permitAll()
 			.antMatchers("/falsearUsuariosRest").permitAll()
 			.antMatchers("/leerUsuarioRest").permitAll()
-
+			.antMatchers("/guardarUsuarioRest").permitAll()
 			.antMatchers("/listarLikesRest").permitAll()
 			
 			

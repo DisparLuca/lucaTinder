@@ -36,6 +36,7 @@ public class Usuario implements Serializable{
 		super();
 	}
 
+
 	public Usuario(String nombre, int edad, String genero, String ciudad, String foto) {
 		super();
 		this.nombre = nombre;
