@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.dispares.lucatinder.model.Usuario;
 import com.dispares.lucatinder.service.Servicios;
@@ -27,7 +29,7 @@ public class ControladorRestUsuarios {
 	
 	@Autowired
 	Servicios servUsuario;
-	 
+	
 	@RequestMapping(value = "/loginRest", method = RequestMethod.GET)
 	public String login(HttpServletResponse httpServletResponse) {
 		httpServletResponse.setHeader("Location", "http://localhost:8080");
@@ -35,6 +37,7 @@ public class ControladorRestUsuarios {
 		return "redirect:/login";
 		
 	}
+	
 	
 	@RequestMapping(value = "/listarLikesRest", method = RequestMethod.GET)
 	public Collection<Usuario> listarLikesRest() {
@@ -64,7 +67,7 @@ public class ControladorRestUsuarios {
 			 httpServletResponse.setStatus(302);
 			 return "redirect:/usuario";
 		}
-		 
+	 
 		 /**
 		 * metodo para guardar usuario
 		 *

@@ -70,6 +70,9 @@ class LucaTinderApplicationTests {
 		servicio.delete(usuario.getId());
 		}
 	
+	@Test	void existenUsuarios() throws Exception{
+		assertThat(servicio.listarUsuarios()).isNotEmpty();
+	}
 	/*@Test
 	public void envPostAvailable() {
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
